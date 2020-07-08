@@ -37,11 +37,11 @@ def update_data(interval):
 	global feed_dict
 	feed_dict = rss_feed.feed_data()
 
+update_data(5)
 
 @app.route("/")
 def hello():
 	#feed_dict = rss_feed.feed_data()
 	#feed_dict=feed_data()
 	# 	time.sleep(5)
-	update_data(5)
 	return render_template('home.html', feed_dict=feed_dict)
