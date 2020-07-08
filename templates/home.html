@@ -9,39 +9,43 @@
        <!-- Bootstrap CSS -->
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+       
+
        <title>RSS Feed</title>
     </head>
     <body>
 
         <h1 class="display-4" style="text-align:center;">Fetched data from RSS Feed Form</h1><br><br>
 
-        <table class="table table-bordered">
+        <div id="update">
+            <table class="table table-bordered">
 
-            <thead>
-                <tr class="table-active">
-                    <th scope="col"> SL. NO.</th>
-                    <th scope="col"> TITLE</th>
-                    <th scope="col"> LINK</th>
-                    <th scope="col"> DESCRIPTION</th>
-                    <th scope="col"> PUBDATE</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col"> SL. NO.</th>
+                        <th scope="col"> TITLE</th>
+                        <th scope="col"> LINK</th>
+                        <th scope="col"> DESCRIPTION</th>
+                        <th scope="col"> PUBDATE</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                {% for key, values in feed_dict.items() %}
-                <tr>
-                    <th scope="row">{{ key + 1 }}</th>
-                    {% for val in values %}
-                        {% if values[1] == val %}
-                            <td> <a href="{{ val.href }}"> {{ val }}</a> </td>
-                        {% else %}
-                            <td> {{ val | safe }} </td>
-                        {% endif %}
+                <tbody>
+                    {% for key, values in feed_dict.items() %}
+                    <tr>
+                        <th scope="row">{{ key + 1 }}</th>
+                        {% for val in values %}
+                            {% if values[1] == val %}
+                                <td> <a href="{{ val.href }}"> {{ val }}</a> </td>
+                            {% else %}
+                                <td> {{ val | safe }} </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% endfor %}
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
+        </div>
     </body>
 </html>
